@@ -1,20 +1,24 @@
+// Import necessary data and constants from the data.js file.
 import { books, authors, genres, BOOKS_PER_PAGE } from "./data.js";
 
+// Initialize page number and matches array.
 let page = 1;
 let matches = books;
 
-/* const starting = document.createDocumentFragment();
-for (const { author, id, image, title } of matches.slice(0, BOOKS_PER_PAGE)) {*/
-
+// Functiom to get DOM elements.
 const getElement = (selector) => document.querySelector(selector);
 
 const createBookPreviews = (books, container) => {
+  // Create a document fragment to hold the previous temporarily for efficient DOM manipulation.
   const fragment = document.createDocumentFragment();
+  // Iterate over each book in the array.
   books.forEach(({ author, id, image, title }) => {
+    // Create a button element for each book.
     const element = document.createElement("button");
+    // Set class and date attributes for styling and identification.
     element.classList = "preview";
     element.setAttribute("data-preview", id);
-
+    // Set inner HTML for the button, including book image, title and author.
     element.innerHTML = `
         <img
             class="preview__image"
@@ -26,13 +30,18 @@ const createBookPreviews = (books, container) => {
             <div class="preview__author">${authors[author]}</div>
         </div>
     `;
+    // Append the button element to the fragment.
     fragment.appendChild(element);
   });
+  // Append all preview elements from the fragment to the container at once for better performance.
   container.appendChild(fragment);
 };
 
+// Create select options dynamically based on the provided data.
 const createOptions = (options, defaultOption, container) => {
+  // Create a document fragment to hold the options temporarily for efficient DOM manipulation.
   const fragment = document.createDocumentFragment();
+  //
   const firstOption = document.createElement("option");
   firstOption.value = "any";
   firstOption.innerText = defaultOption;
