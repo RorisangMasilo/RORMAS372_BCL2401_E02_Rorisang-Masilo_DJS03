@@ -31,21 +31,20 @@ const createBookPreviews = (books, container) => {
   container.appendChild(fragment);
 };
 
-document.querySelector("[data-list-items]").appendChild(starting);
-
-const genreHtml = document.createDocumentFragment();
-const firstGenreElement = document.createElement("option");
-firstGenreElement.value = "any";
-firstGenreElement.innerText = "All Genres";
-genreHtml.appendChild(firstGenreElement);
-
-for (const [id, name] of Object.entries(genres)) {
-  const element = document.createElement("option");
-  element.value = id;
-  element.innerText = name;
-  genreHtml.appendChild(element);
-}
-
+const createOptions = (options, defaultOption, container) => {
+  const fragment = document.createDocumentFragment();
+  const firstOption = document.createElement("option");
+  firstOption.value = "any";
+  firstOption.innerText = defaultOption;
+  genreHtml.appendChild(firstOption);
+  Object.entries(options).forEach(([id, name]) => {
+    const element = document.createElement("option");
+    element.value = id;
+    element.innerText = name;
+    fragment.appendChild(element);
+  });
+  container.appendChild(fragment);
+};
 document.querySelector("[data-search-genres]").appendChild(genreHtml);
 
 const authorsHtml = document.createDocumentFragment();
