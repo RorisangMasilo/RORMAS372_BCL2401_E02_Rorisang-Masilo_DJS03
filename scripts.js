@@ -41,7 +41,7 @@ const createBookPreviews = (books, container) => {
 const createOptions = (options, defaultOption, container) => {
   // Create a document fragment to hold the options temporarily for efficient DOM manipulation.
   const fragment = document.createDocumentFragment();
-  //
+  // Create the first option element with default text and value.
   const firstOption = document.createElement("option");
   firstOption.value = "any";
   firstOption.innerText = defaultOption;
@@ -54,9 +54,20 @@ const createOptions = (options, defaultOption, container) => {
   });
   container.appendChild(fragment);
 };
-document.querySelector("[data-search-genres]").appendChild(genreHtml);
 
-const authorsHtml = document.createDocumentFragment();
+const applyTheme = (theme) => {
+    const isNight = theme === "night";
+    document.documentElement.style.setProperty(
+        "--color-dark",
+        isNight ? "10, 10, 20" : "255, 255, 255"
+    );
+    document.documentElement.style.setProperty(
+        "--color-light",
+        isNight ? "10, 10, 20" : "255, 255, 255"
+    ); 
+};
+
+/* const authorsHtml = document.createDocumentFragment();
 const firstAuthorElement = document.createElement("option");
 firstAuthorElement.value = "any";
 firstAuthorElement.innerText = "All Authors";
