@@ -26,8 +26,9 @@ const createBookPreviews = (books, container) => {
             <div class="preview__author">${authors[author]}</div>
         </div>
     `;
+    fragment.appendChild(element);
   });
-  starting.appendChild(element);
+  container.appendChild(fragment);
 };
 
 document.querySelector("[data-list-items]").appendChild(starting);
