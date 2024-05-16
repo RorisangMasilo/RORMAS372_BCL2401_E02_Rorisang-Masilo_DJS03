@@ -129,6 +129,17 @@ window.scrollTo({ top: 0, behavior: "smooth"});
 closeOverlay("[data-search-overlay]")
 };
 
+const handleShowMore = () => {
+  createBookPreviews(
+    matches.slice(page * BOOKS_PER_PAGE, (page + 1) * BOOKS_PER_PAGE),
+    getElement("[data-list-items]")
+  );
+  page += 1;
+  updateShowMoreButton();
+};
+
+
+
 /* const authorsHtml = document.createDocumentFragment();
 const firstAuthorElement = document.createElement("option");
 firstAuthorElement.value = "any";
