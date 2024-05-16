@@ -154,6 +154,20 @@ const handleListItemClick = (event) => {
   }
 };
 
+// Initial setup
+
+
+// Event listeners
+getElement("[data-search-cancel]").addEventListener("click", handleSearchCancel);
+getElement("[data-setting-cancel]").addEventListener("click", handleSettingsCancel);
+getElement("[data-header-search]").addEventListener("click", handleHeaderSearch);
+getElement("[data-header-settings]").addEventListener("click", handleHeaderSettings);
+getElement("[data-list-close]").addEventListener("click",() => closeOverlay("[data-list-active]"));
+getElement("[data-setting-form]").addEventListener("submit", handleSubmitSettings);
+getElement("[data-search-form]").addEventListener("submit", handleSubmitSearch);
+getElement("[data-list-button]").addEventListener("click", handleShowMore);
+getElement("[data-list-items]").addEventListener("click", handleListItemClick);
+
 /* const authorsHtml = document.createDocumentFragment();
 const firstAuthorElement = document.createElement("option");
 firstAuthorElement.value = "any";
