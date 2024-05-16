@@ -155,7 +155,11 @@ const handleListItemClick = (event) => {
 };
 
 // Initial setup
-
+createOptions(genres, "All Genres", getElement("[data-search-genres]"));
+createOptions(authors, "All Authors", getElement("[data-search-authors]"));
+applyTheme(window.matchMedia("(prefers-colors-scheme: dark)").matches ? "night" : "day");
+createBookPreviews(matches.slice(0, BOOKS_PER_PAGE), getElement("[data-list-items]"));
+updateShowMoreButton();
 
 // Event listeners
 getElement("[data-search-cancel]").addEventListener("click", handleSearchCancel);
