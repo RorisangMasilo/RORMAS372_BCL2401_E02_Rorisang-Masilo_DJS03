@@ -111,6 +111,23 @@ applyTheme(theme);
 closeOverlay("[data-settings-overlay]");
 };
 
+const handleSubmitSearch = (event) => {
+event.preventDefault();
+const formData = new FormData(event.target);
+const filters = Object.fromEntries(formData);
+matches = applySearchFilters(filters);
+page = 1;
+const listMessage = getElement("[data-list-message]");
+listMessage.classList.toggle("list_message_show", matches.length < 1);
+getElement("[data-list-items]").innerHTML = "";
+createBookPreviews(
+  matches.slice(0, BOOKS_PER_PAGE),
+  getElement("[data-list-items]")
+);
+updateShowMoreButton();
+window.scrollTo({ top: 0, behavior: "smooth"});
+closeOverlay("[data-search-overlay]")
+};
 
 /* const authorsHtml = document.createDocumentFragment();
 const firstAuthorElement = document.createElement("option");
