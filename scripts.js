@@ -97,6 +97,21 @@ const applySearchFilters = (filters) => {
   });
 };
 
+const handleSearchCancel = () => closeOverlay ("[data-search-overlay]");
+
+const handleSettingsCancel = () => closeOverlay ("[data-settings-overlay]");
+
+const handleHeaderSearch = () => openOverlay("[data-search-overlay]", "[data-search-title]");
+
+const handleSubmitSettings = (event) => {
+event.preventDefault();
+const formData = new FormData(event.target);
+const { theme } = Object.fromEntries(formData);
+applyTheme(theme);
+closeOverlay("[data-settings-overlay]");
+};
+
+
 /* const authorsHtml = document.createDocumentFragment();
 const firstAuthorElement = document.createElement("option");
 firstAuthorElement.value = "any";
