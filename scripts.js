@@ -138,7 +138,21 @@ const handleShowMore = () => {
   updateShowMoreButton();
 };
 
-
+const handleListItemClick = (event) => {
+  const pathArray = Array.from(event.composedPath());
+  const active = pathArray.find((node) => node?.dataset?.preview);
+  if (active) {
+    const book = books.find((book) => book.id === active.dataset.preview);
+    if (book) {
+      getElement("[data-list-active]").open = true;
+      getElement("[data-list-blur]").src = book.image;
+      getElement("[data-list-image]").src = book.image;
+      getElement("[data-list-title]").innerText = book.title;
+      getElement("[data-list-subtitle]").innerText = `${authors[book.author]} (${new Date().getFullYear()})`;
+      getElement("[data-list-description]").innerText = book.description;
+    }
+  }
+};
 
 /* const authorsHtml = document.createDocumentFragment();
 const firstAuthorElement = document.createElement("option");
