@@ -37,3 +37,50 @@ After completing the tasks, prepare a brief presentation for your coaching group
 Submit the refactored version of the "Book Connect" application, including all HTML, CSS, and JavaScript files. Ensure that your code is well-documented and adheres to the specified Styleguides. Include a written report covering the discussion and reflection points outlined above.
 
 Make sure to submit your project to the LMS on the DJS03 Project Tab.
+
+### Personal Reflection
+
+#### Project Overview
+This application is a book preview interface that allows users to browse, filter, and view details of books. The code is written in JavaScript and interacts with HTML elements to provide dynamic content updates.
+
+#### Features
+Display a list of books with previews.
+Filter books by genre and author.
+Toggle between light and dark themes.
+View detailed information about a selected book.
+Paginate through the list of books.
+
+#### File Structure
+data.js: Contains the data for books, authors, genres, and the constant BOOKS_PER_PAGE.
+index.html: HTML file with the structure for the application.
+app.js: JavaScript file containing the logic for the application.
+
+#### Utility Functions:
+getElement(selector): Selects a DOM element.
+createBookPreviews(books, container): Creates book preview elements and appends them to the container.
+createOptions(options, defaultOption, container): Creates options for select elements.
+applyTheme(theme): Applies the selected theme.
+updateShowMoreButton(): Updates the "Show More" button based on remaining books.
+closeOverlay(selector): Closes the overlay element.
+openOverlay(selector, focusSelector): Opens the overlay element and sets focus.
+
+#### Event Handlers:
+`handleSubmitSettings(event): Handles the submission of the settings form to apply the selected theme.
+handleSubmitSearch(event): Handles the submission of the search form to filter books.
+handleShowMore(): Handles the "Show More" button to load more book previews.
+handleListItemClick(event): Handles the click event on a book preview to show detailed information.
+
+#### Usage
+Filter Books:
+Select the desired genre and/or author from the dropdowns and submit the search form.
+The list of books will be filtered based on the selected criteria.
+
+Change Theme:
+Open the settings overlay and select either "day" or "night" theme.
+Submit the settings form to apply the selected theme.
+
+View More Books:
+Click the "Show More" button to load additional book previews.
+
+View Book Details:
+Click on a book preview to open an overlay with detailed information about the selected book.
